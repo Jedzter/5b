@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Lottery</title>
+        <h4>Winning Numbers and Luckyball</h4>
+        <script language="javascript">
+         
+            var randomnumber = function(start, end) {
+                var rand = Math.floor((Math.random() * end) + start);
+                rand = parseInt(rand);
+                return rand;
+            }
+            //5 number array
+            var luckynumbers = [randomnumber(01, 48), randomnumber(01, 48), randomnumber(01, 48), randomnumber(01, 48), randomnumber(01, 48)];
+
+            for (var i = 0; i < luckynumbers.length; i++) {
+                  document.write(luckynumbers[i]+" ");
+           };
+              document.write("<br>");
+
+       
+           var luckyball = randomnumber(1, 18);
+           document.write(luckyball);
+            function calc(){
+                var personalentered = document.getElementById('entered').value;
+                var lbentered = document.getElementById('luckyballent').value;
+
+                personalentered = personalentered.split(" ");
+                var count = 0;
+                for (i = 0; i < luckynumbers.length; i++) {
+                    for (j = 0; j < personalentered.length; j++) {
+                        if (luckynumbers[i] == personalentered[j]){
+                            count +=1;
+                            break;
+                        }
+                    }
+                }
+
+                if ((count == 5) && (luckyball == lbentered)){
+                    alert("you win: 7,000 a WEEK for LIFE!");
+                }else if(count == 5){
+                    alert("you win $25,000 a year for LIFE!");
+                }else if ((count == 4) && (luckyball == lbentered)){
+                    alert("you win $5,000");
+                }else if(count == 4){
+                    alert("you win $200");
+                }else if ((count == 3) && (luckyball == lbentered)){
+                    alert("you win $150");
+                }else if (count == 3){
+                    alert("you win $20");
+                }else if ((count == 2) && (luckyball == lbentered)){
+                    alert("you win $25");
+                }else if (count == 2){
+                    alert("you win $3");
+                }else if ((count == 1) && (luckyball == lbentered)){
+                    alert("you win $6");
+                }else if ((count == 0) && (luckyball == lbentered)){
+                    alert("you win $4");
+                }else{
+                    alert("Sorry those are not the winning numbers! Try again!");
+            }}
+        </script>
+    </head>
+
+    <body>
+         <form>
+                <h4>Enter your quick pick </h4>
+                Enter five numbers seperated by spaces (ranging from 1-48): <br /> <input type="text" name="entered" id="entered"><br />
+                <br>
+
+                Enter a Lucky Ball number (ranging from 1-18): <br/> <input type="text" name="luckyballent" id="luckyballent"><br />
+                <input type="button" value="Check!" onclick = "calc()">
+           </form>
+    </body>
+</html>
